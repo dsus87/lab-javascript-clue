@@ -54,17 +54,17 @@ const weaponsArray = [
 //      let randomIndex1 = Math.floor(Math.random()*suspectsArray.length)
 //      let randomSuspectsElement = suspectsArray[randomIndex1];
   
-//      let randomIndex2 = Math.floor(Math.random()*roomsArray.length);
-//      let randomRoomsElement = roomsArray[randomIndex2];
+//      let randomIndex2 = Math.floor(Math.random()*roomsArray.length)
+//      let randomRoomsElement = roomsArray[randomIndex2]
 
-//      let randomIndex3 = Math.floor(Math.random() * weaponsArray.length);
-//      let randomWeaponsElement = weaponsArray[randomIndex3];
+//      let randomIndex3 = Math.floor(Math.random() * weaponsArray.length)
+//      let randomWeaponsElement = weaponsArray[randomIndex3]
 
-//      return { randomSuspectsElement,randomRoomsElement, randomWeaponsElement,};
+//      return { randomSuspectsElement,randomRoomsElement, randomWeaponsElement,}
  
 //  }
 
-// let randomSelection = selectRandom(suspectsArray, roomsArray, weaponsArray);
+// let randomSelection = selectRandom(suspectsArray, roomsArray, weaponsArray)
 
 // console.log(randomSelection);
 
@@ -73,7 +73,6 @@ function selectRandom(suspectsArray,roomsArray,weaponsArray) {    // Define a fu
     let randomCardDeckIndex = Math.floor(Math.random()*allCardDecks.length)   //Generate a random index number by multiplying a random decimal between 0 and 1 with the length of 'allCardDecks'. 
                                                                              // Then, round down the result to the nearest whole number using 'Math.floor'.
     let selectedCardDeckIndex = allCardDecks[randomCardDeckIndex]    // Get the selected card deck from 'allCardDecks' using the 'randomCardDeckIndex'.
-
     let randomIndex =  Math.floor(Math.random() * selectedCardDeckIndex.length)  //  Generate another random index within the selected card deck.
     return selectedCardDeckIndex[randomIndex];  // Return the randomly selected card from the selected card deck.
 
@@ -81,19 +80,19 @@ function selectRandom(suspectsArray,roomsArray,weaponsArray) {    // Define a fu
 
 const randomCard = selectRandom(suspectsArray, roomsArray, weaponsArray); // Call the 'selectRandom' function with the three arrays, and store the result in a constant variable 'randomCard'.
 
-
 console.log(randomCard);
 
+
 function selectRandom(cardDeck) {  // Define a new version of the 'selectRandom' function that takes a single input 'cardDeck'.
-    const randomIndex = Math.floor(Math.random() * cardDeck.length); //  Generate a random index within 'cardDeck'.
+    const randomIndex = Math.floor(Math.random() * cardDeck.length) //  Generate a random index within 'cardDeck'.
     return cardDeck[randomIndex]; // Return the randomly selected card from 'cardDeck'.
 
 }
 
 function pickMystery() {
 
-    const mystery = {
-        suspect: selectRandom(suspectsArray),
+    const mystery = {     //   Create an object called 'mystery' with three properties: 'suspect', 'weapon', and 'room'.
+        suspect: selectRandom(suspectsArray),   // Assign a randomly selected suspect, weapon, and room by calling the 'selectRandom' function with the respective arrays.
         weapon: selectRandom(weaponsArray),
         room: selectRandom(roomsArray)
     };
@@ -101,14 +100,26 @@ function pickMystery() {
     return mystery;
 }
 
-const mystery = pickMystery();
-console.log(mystery);
 
+console.log(pickMystery());
 
 
 
 // ITERATION 3
 
-function revealMystery() {}
+function revealMystery(envelope) {
+    const { suspect, weapon, room } = envelope; // Destructure the envelope object to get the suspect, weapon, and room.
+
+    const message = `${suspect.firstName} ${suspect.lastName} killed Mr. Boddy using the ${weapon.name} in the ${room.name}!`
+    // Construct the revealing message with the correct format.
+
+    return message
+}
+
+const mystery2 = pickMystery() // Get a mystery object from the pickMystery function.
+const message = revealMystery(mystery2) // Get the revealing message.
+console.log(message) // Output the revealing message.
+
+
 
 
